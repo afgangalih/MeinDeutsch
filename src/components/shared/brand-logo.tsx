@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 type BrandLogoProps = {
@@ -6,13 +7,17 @@ type BrandLogoProps = {
 
 export function BrandLogo({ className }: BrandLogoProps) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      <div className="flex size-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
-        M
-      </div>
-      <span className="text-lg font-bold tracking-tight text-foreground">
-        MeinDeutsch
-      </span>
+    <div className={cn("flex items-center", className)}>
+      <Image
+        src="/logo-md.png"
+        alt="MeinDeutsch Logo"
+        width={180}
+        height={48}
+        priority
+        style={{ height: "40px", width: "auto" }}
+        className="object-contain"
+      />
     </div>
   );
 }
+
