@@ -33,7 +33,8 @@ export default function LoginPage() {
     setLoading(false);
 
     if (signInError) {
-      setError("Email atau password belum cocok. Coba periksa kembali data masukmu.");
+      console.error("Sign in error:", signInError);
+      setError(signInError.message || "Email atau password belum cocok. Coba periksa kembali data masukmu.");
       return;
     }
 
