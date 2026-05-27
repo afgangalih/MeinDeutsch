@@ -1,8 +1,8 @@
-import { GreetingCard } from "@/components/dashboard/greeting-card";
+import { GreetingCard } from "@/components/dashboard/home/greeting-card";
 import {
   LevelProgressSummary,
   SkillTrackerCard,
-} from "@/components/dashboard/stats-overview";
+} from "@/components/dashboard/home/stats-overview";
 
 export default function DashboardPage() {
   return (

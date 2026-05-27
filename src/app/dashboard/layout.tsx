@@ -1,4 +1,4 @@
-import { DashboardSidebar } from "@/components/dashboard/sidebar";
+import { DashboardSidebar } from "@/components/dashboard/layout/sidebar";
 import { AuthGuard } from "@/components/shared/auth-guard";
 
 export default function DashboardLayout({

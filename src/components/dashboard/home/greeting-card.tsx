@@ -50,24 +50,28 @@ export function GreetingCard() {
   }, []);
 
   return (
-    <Card className="rounded-lg border-0 bg-[#111827] py-0 text-white ring-0">
-      <CardContent className="relative overflow-hidden px-5 py-6 sm:px-7 sm:py-8">
-        <div className="absolute right-0 top-0 h-full w-1/3 bg-[linear-gradient(135deg,rgba(221,0,0,0.9),rgba(255,204,0,0.92))]" />
-        <div className="relative max-w-2xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-lg bg-white/10 px-3 py-1 text-xs font-medium text-white/80">
-            <CalendarDays className="size-3.5" aria-hidden="true" />
+    <Card className="rounded-3xl border border-border/40 bg-card p-6 md:p-8 shadow-xs">
+      <CardContent className="p-0 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-secondary/15 px-3.5 py-1 text-xs font-bold text-foreground">
+            <CalendarDays className="size-3.5 text-secondary" aria-hidden="true" />
             Deutsch Sprint A1
           </div>
-          <h1 className="text-2xl font-semibold tracking-normal sm:text-3xl">
-            Guten Tag, {name}.
+          <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
+            Guten Tag, {name}!
           </h1>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-white/75">
-            Hari ini cukup satu langkah yang jelas: lanjutkan modul A1 dan jaga ritme empat
-            keterampilan tetap seimbang.
+          <p className="mt-2 text-sm text-muted-foreground max-w-xl">
+            Hari ini cukup satu langkah yang jelas: lanjutkan modul A1 dan jaga ritme empat keterampilan belajar Anda tetap seimbang.
           </p>
-          <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-[#FFCC00]">
-            <Sparkles className="size-4" aria-hidden="true" />
-            18 menit latihan direkomendasikan
+        </div>
+        
+        <div className="shrink-0 flex items-center gap-3 rounded-2xl bg-muted p-4 border border-border/30">
+          <div className="flex size-10 items-center justify-center rounded-xl bg-secondary text-secondary-foreground font-bold">
+            <Sparkles className="size-5" />
+          </div>
+          <div>
+            <p className="text-xs font-bold text-foreground">Rekomendasi Belajar</p>
+            <p className="text-xs text-muted-foreground">18 menit latihan hari ini</p>
           </div>
         </div>
       </CardContent>

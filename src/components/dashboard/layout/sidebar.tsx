@@ -111,11 +111,11 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 
   return (
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
-      <div className="border-b border-sidebar-border px-5 py-5">
+      <div className="border-b border-sidebar-border px-6 py-5">
         <BrandLogo />
       </div>
 
-      <nav className="flex-1 space-y-1 px-3 py-5">
+      <nav className="flex-1 space-y-1 py-6">
         {navItems.map((item) => {
           const active =
             item.href === "/dashboard"
@@ -129,8 +129,8 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
               href={item.href}
               onClick={onNavigate}
               className={cn(
-                "flex h-10 items-center gap-3 rounded-lg px-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
-                active && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground"
+                "flex h-10 items-center gap-3 px-6 text-sm font-medium text-muted-foreground transition-all hover:bg-sidebar-accent hover:text-sidebar-accent-foreground border-l-2 border-transparent",
+                active && "bg-sidebar-accent text-foreground border-l-primary font-semibold"
               )}
             >
               <Icon className="size-4" aria-hidden="true" />
@@ -141,7 +141,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
       </nav>
 
       <div className="border-t border-sidebar-border p-4">
-        <div className="mb-3 flex min-w-0 items-center gap-3 rounded-lg bg-muted/60 p-3">
+        <div className="mb-3 flex min-w-0 items-center gap-3 rounded-xl bg-muted/60 p-3">
           <Avatar>
             {profile?.avatar_url ? <AvatarImage src={profile.avatar_url} alt="" /> : null}
             <AvatarFallback>{getInitials(displayName, email)}</AvatarFallback>
@@ -154,7 +154,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
         <Button
           type="button"
           variant="outline"
-          className="w-full justify-start"
+          className="w-full justify-start hover:bg-destructive/10 hover:text-destructive hover:border-destructive/20 transition-colors"
           onClick={handleLogout}
           disabled={loggingOut}
         >
