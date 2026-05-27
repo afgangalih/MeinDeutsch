@@ -54,8 +54,10 @@ const benefits = [
 
 export function BenefitsSection() {
   return (
-    <section className="border-b border-border bg-background">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+    <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-border bg-background">
+      <div className="absolute inset-y-0 left-[8%] w-px bg-border/30 pointer-events-none hidden xl:block" />
+      <div className="absolute inset-y-0 right-[8%] w-px bg-border/30 pointer-events-none hidden xl:block" />
+      <div className="mx-auto w-full max-w-6xl px-6 py-16 lg:py-24 flex-1 flex flex-col justify-center relative z-10">
         <div className="mb-14">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
             Kenapa MeinDeutsch?
@@ -74,7 +76,7 @@ export function BenefitsSection() {
             const Icon = item.icon;
             return (
               <div key={item.id} className="flex flex-col gap-4">
-                <div className="flex size-10 items-center justify-center rounded-xl border border-border bg-muted">
+                <div className="flex size-10 items-center justify-center rounded-xl border border-border/30 bg-muted">
                   <Icon className="size-4.5 text-foreground" />
                 </div>
                 <div>

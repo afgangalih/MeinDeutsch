@@ -154,3 +154,8 @@
 .animate-delay-300 { animation-delay: 300ms; }
 .animate-delay-400 { animation-delay: 400ms; }
 .animate-delay-500 { animation-delay: 500ms; }
+
+.bg-grid-pattern {
+  background-image: radial-gradient(color-mix(in srgb, var(--border) 45%, transparent) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}

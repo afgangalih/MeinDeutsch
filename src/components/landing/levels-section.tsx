@@ -53,8 +53,10 @@ const levels = [
 
 export function LevelsSection() {
   return (
-    <section id="levels" className="border-b border-border bg-muted/30">
-      <div className="mx-auto max-w-6xl px-6 py-24">
+    <section id="levels" className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-border bg-muted/30 bg-grid-pattern">
+      <div className="absolute inset-y-0 left-[8%] w-px bg-border/20 pointer-events-none hidden xl:block" />
+      <div className="absolute inset-y-0 right-[8%] w-px bg-border/20 pointer-events-none hidden xl:block" />
+      <div className="mx-auto w-full max-w-6xl px-6 py-16 lg:py-24 flex-1 flex flex-col justify-center relative z-10">
         <div className="mb-14 text-center">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">
             Kurikulum CEFR
@@ -74,8 +76,8 @@ export function LevelsSection() {
               key={level.id}
               className={`relative rounded-2xl border p-6 transition-all ${
                 level.active
-                  ? "border-primary bg-card shadow-sm"
-                  : "border-border bg-card/60 opacity-80"
+                  ? "border-primary bg-card shadow-xs"
+                  : "border-border/30 bg-card/60 opacity-80"
               }`}
             >
               {level.active && (
@@ -102,7 +104,9 @@ export function LevelsSection() {
                 <span className="text-sm font-bold">{level.code}</span>
               </div>
 
-              <h3 className="text-xl font-bold text-foreground">{level.name}</h3>
+              <h3 className="text-xl font-bold text-foreground">
+                {level.name}
+              </h3>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">{level.description}</p>
 
               {level.active && level.modules && (

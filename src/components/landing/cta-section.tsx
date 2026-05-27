@@ -5,9 +5,11 @@ import { cn } from "@/lib/utils";
 
 export function CTASection() {
   return (
-    <section className="border-b border-border bg-background py-16">
-      <div className="mx-auto max-w-4xl px-6">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-6 py-12 text-center shadow-sm md:py-16">
+    <section className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col justify-center overflow-hidden border-b border-border bg-background bg-grid-pattern">
+      <div className="absolute inset-y-0 left-[8%] w-px bg-border/30 pointer-events-none hidden xl:block" />
+      <div className="absolute inset-y-0 right-[8%] w-px bg-border/30 pointer-events-none hidden xl:block" />
+      <div className="mx-auto w-full max-w-4xl px-6 py-12 flex-1 flex flex-col justify-center relative z-10">
+        <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-card px-6 py-12 text-center shadow-xs md:py-16">
           <div className="absolute top-0 left-0 right-0 h-1.5 flex">
             <div className="h-full flex-1 bg-foreground" />
             <div className="h-full flex-1 bg-primary" />
