@@ -93,15 +93,25 @@ graph TD
 
 ---
 
-## Database Design
+The database schema handles user authentication, curriculum pathways, interactive exercise setups, and detailed progress logging. Below is the mapping of all tables implemented in Supabase:
 
-The schema is built to represent the hierarchy of courses down to individual questions:
-
-* `learning_courses`: Represents levels (e.g., A1) and core info.
-* `learning_lessons`: Lessons belonging to a course (grammar notes, summaries).
-* `learning_vocabulary`: Vocabulary database linked to specific lessons.
-* `learning_grammar`: Detailed standalone grammar entries categorized by CEFR levels.
-* `quiz_questions`: Multi-format quiz items (Multiple Choice, Drag-and-Drop, Fill-in-the-Blank).
+| Table Category | Table Name | Purpose |
+| :--- | :--- | :--- |
+| **Core Curriculum** | `learning_courses` | Store core CEFR courses & learning level details |
+| | `learning_lessons` | Lesson syllabus nodes containing core content & media |
+| | `learning_vocabulary` | Specific vocabulary lists associated with lessons |
+| | `learning_grammar` | Dedicated grammar topics, rules, and example data |
+| **Quiz & Evaluation** | `quiz_questions` | Question pool (Multiple Choice, Fill-in-the-Blank, etc.) |
+| | `quiz_attempts` | Store session headers when a user starts an evaluation |
+| | `quiz_attempt_answers` | Log individual user choices per question within an attempt |
+| **User Progress** | `users` | Local mirror metadata of authenticated Supabase users |
+| | `user_progress` | General level-wide tracking configurations |
+| | `user_lesson_progress` | Log of completed lessons to enforce syllabus unlocking |
+| | `user_answers` | Aggregated log of answers for performance stats |
+| | `saved_vocabulary` | Personal vocabulary bank for starred/starred tricky words |
+| **Legacy / References** | `levels`, `modules`, `lessons` | Legacy structural layout tables |
+| | `courses`, `exercises`, `exercise_options` | Legacy course metadata structures |
+| | `vocabulary_bank` | Legacy vocabulary repository reference |
 
 ---
 
@@ -230,10 +240,11 @@ This project can be deployed seamlessly to Vercel, Netlify, or self-hosted serve
 ## Contributors
 
 <a href="https://github.com/afgangalih">
-  <img src="https://github.com/afgangalih.png" width="50px" style="border-radius: 50%;" alt="Afgan Galih Profile" />
-  <br />
-
+  <img src="https://github.com/afgangalih.png" width="60" height="60" style="border-radius: 50%; border: 2px solid #DD0000;" alt="Afgan Galih" align="center" />
 </a>
+
+<br />
+
 
 ## License
 
