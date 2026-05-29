@@ -10,6 +10,8 @@ import {
   LogOut,
   Menu,
   MessageSquareText,
+  RefreshCcw,
+  SquareActivity,
 } from "lucide-react";
 
 import { BrandLogo } from "@/components/shared/brand-logo";
@@ -35,8 +37,10 @@ type Profile = {
 const navItems = [
   { label: "Dashboard", href: "/dashboard", icon: Gauge },
   { label: "Materi", href: "/dashboard/courses", icon: BookOpen },
+  { label: "Four Skills", href: "/dashboard/four-skills", icon: SquareActivity },
   { label: "Vocabulary", href: "/dashboard/vocabulary", icon: MessageSquareText },
   { label: "Grammar", href: "/dashboard/grammar", icon: GraduationCap },
+  { label: "Smart Review", href: "/dashboard/smart-review", icon: RefreshCcw },
 ];
 
 async function fetchProfile(userId: string): Promise<Profile | null> {
@@ -69,7 +73,7 @@ function getInitials(name?: string | null, email?: string | null) {
     .join("");
 }
 
-function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
+export function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -141,20 +145,9 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
       </nav>
 
       <div className="border-t border-sidebar-border p-4">
-        <div className="mb-3 flex min-w-0 items-center gap-3 rounded-xl bg-muted/60 p-3">
-          <Avatar>
-            {profile?.avatar_url ? <AvatarImage src={profile.avatar_url} alt="" /> : null}
-            <AvatarFallback>{getInitials(displayName, email)}</AvatarFallback>
-          </Avatar>
-          <div className="min-w-0">
-            <p className="truncate text-sm font-semibold">{displayName}</p>
-            <p className="truncate text-xs text-muted-foreground">{email}</p>
-          </div>
-        </div>
         <Button
           type="button"
-          variant="outline"
-          className="w-full justify-start hover:bg-destructive/10 hover:text-destructive hover:border-destructive/20 transition-colors"
+          className="w-full h-10 gap-2 justify-center rounded-xl bg-red-500/10 hover:bg-[#DD0000] text-red-500 hover:text-white border border-red-500/20 hover:border-[#DD0000] text-xs font-bold transition-all duration-200"
           onClick={handleLogout}
           disabled={loggingOut}
         >
@@ -167,36 +160,9 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 export function DashboardSidebar() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <>
-      <aside className="fixed inset-y-0 left-0 hidden w-72 border-r border-sidebar-border bg-sidebar lg:block">
-        <SidebarContent />
-      </aside>
-
-      <div className="sticky top-0 z-40 flex h-16 items-center justify-between border-b bg-background/95 px-4 backdrop-blur lg:hidden">
-        <BrandLogo />
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger
-            render={
-              <button
-                type="button"
-                className={buttonVariants({ variant: "outline", size: "icon" })}
-                aria-label="Buka menu dashboard"
-              />
-            }
-          >
-            <Menu className="size-4" aria-hidden="true" />
-          </SheetTrigger>
-          <SheetContent side="left" className="w-80 max-w-[86vw] p-0" showCloseButton={false}>
-            <SheetHeader className="sr-only">
-              <SheetTitle>Menu dashboard</SheetTitle>
-            </SheetHeader>
-            <SidebarContent onNavigate={() => setOpen(false)} />
-          </SheetContent>
-        </Sheet>
-      </div>
-    </>
+    <aside className="fixed inset-y-0 left-0 hidden w-72 border-r border-sidebar-border bg-sidebar lg:block">
+      <SidebarContent />
+    </aside>
   );
 }
